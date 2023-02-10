@@ -1,0 +1,17 @@
+#!/bin/bash
+
+name=$(whoami)
+privateip=$(hostname -i)
+pubblicip=$(curl -sS http://ipinfo.io/ip)
+ip_client=$(echo $SSH_CLIENT | awk '{print $1}')
+weather_client=$(curl -sS wttr.in/@$ip_client?0)
+where=$(pwd)
+date=$(LANG=en_UK date)
+
+echo "Welcome back $name!"
+sleep 2
+echo "Pubblic Ip $pubblicip and Private Ip $privateip"
+sleep 2
+echo "$weather_client"
+sleep 2
+echo "$name you are in the $where and todays is the $date" 
